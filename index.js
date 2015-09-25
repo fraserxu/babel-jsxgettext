@@ -1,4 +1,5 @@
 var fs = require('fs')
+var path = require('path')
 var glob = require('glob')
 var gettextParser = require('gettext-parser')
 var babylon = require('babylon')
@@ -6,29 +7,13 @@ var walk = require('acorn/dist/walk')
 
 var SOURCE_PATTERN = './test/*.js'
 
-var DEFAULT_FUNCTION_NAMES = {
-  gettext: ['msgid'],
-  dgettext: ['domain', 'msgid'],
-  ngettext: ['msgid', 'msgid_plural', 'count'],
-  dngettext: ['domain', 'msgid', 'msgid_plural', 'count'],
-  pgettext: ['msgctxt', 'msgid'],
-  dpgettext: ['domain', 'msgctxt', 'msgid'],
-  npgettext: ['msgctxt', 'msgid', 'msgid_plural', 'count'],
-  dnpgettext: ['domain', 'msgctxt', 'msgid', 'msgid_plural', 'count']
-}
-
-var DEFAULT_HEADERS = {
-  'content-type': 'text/plain; charset=UTF-8',
-  'plural-forms': 'nplurals = 2; plural = (n !== 1);'
-}
-
-var functionNames = DEFAULT_FUNCTION_NAMES
+var functionNames = require('./lib/constant').DEFAULT_FUNCTION_NAMES
+var DEFAULT_HEADERS = require('./lib/constant').DEFAULT_HEADERS
+var jsxBase = require('./lib/base')
 
 var data = {
   charset: 'UTF-8',
-
   headers: DEFAULT_HEADERS,
-
   translations: {
     context: {}
   }
@@ -42,37 +27,13 @@ headers['content-type'] = headers['content-type'] || DEFAULT_HEADERS['content-ty
 
 var nplurals = /nplurals ?= ?(\d)/.exec(headers['plural-forms'])[1]
 
-var jsxBase = {
-  JSXElement (node, st, c) {
-    node.openingElement.attributes.forEach(function (attr) {
-      c(attr, st, attr.type)
-    })
-    node.children.forEach(function (child) {
-      c(child, st, child.type)
-    })
-  },
-  JSXExpressionContainer (node, st, c) {
-    c(node.expression, st, node.expression.type)
-  },
-  JSXAttribute (node, st, c) {
-    if (node.value !== null) {
-      c(node.value, st, node.value.type)
-    }
-  },
-  JSXSpreadAttribute (node, st, c) {
-    c(node.argument, st, node.argument.type)
-  },
-  ClassProperty (node, st, c) {
-    // console.log(node, st, c)
-  }
-}
 Object.setPrototypeOf(jsxBase, walk.base)
 
-var test = glob.sync(SOURCE_PATTERN)
+var translation = glob.sync(SOURCE_PATTERN)
   .map(function (file) {
     return fs.readFileSync(file, 'utf8')
   })
-  .map(function (src) {
+  .forEach(function (src) {
     var ast = babylon.parse(src, {
       allowHashBang: true,
       ecmaVersion: Infinity,
@@ -122,8 +83,9 @@ var test = glob.sync(SOURCE_PATTERN)
         }
       }
     }, jsxBase)
-
-    return gettextParser.po.compile(data).toString()
   })
 
-console.log('test', test)
+fs.writeFile(path.join(__dirname, './test.po'), gettextParser.po.compile(data), function (err) {
+  if (err) throw err
+  console.log('Job complete!')
+})
