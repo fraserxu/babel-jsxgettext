@@ -41,8 +41,8 @@ function parser (inputs, output, cb) {
 
   inputs
     .forEach(function (file) {
-      file = path.join(process.cwd(), file)
-      var src = fs.readFileSync(file, 'utf8')
+      var resolvedFilePath = path.join(process.cwd(), file)
+      var src = fs.readFileSync(resolvedFilePath, 'utf8')
       var ast = babylon.parse(src, {
         allowHashBang: true,
         ecmaVersion: Infinity,
