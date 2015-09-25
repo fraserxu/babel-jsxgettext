@@ -10,8 +10,8 @@ var BABEL_FEATURES = require('./lib/constant').BABEL_FEATURES
 var jsxBase = require('./lib/base')
 
 var features = BABEL_FEATURES.reduce(function (result, key) {
-  result[key] = true;
-  return result;
+  result[key] = true
+  return result
 }, {})
 
 /**

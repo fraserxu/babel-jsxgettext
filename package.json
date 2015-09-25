@@ -1,6 +1,6 @@
 {
   "name": "babel-jsxgettext",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "A tool like jsxgettext, but works for es6 + jsx that babel support",
   "main": "index.js",
   "directories": {
