@@ -1,7 +1,43 @@
 # babel-jsxgettext
-A tool like jsxgettext, but works for es6 + jsx that babel support.
+A tool like [jsxgettext](https://www.npmjs.com/package/jsxgettext), but works for `es6` + `jsx` that babel support.
 
 This tool is still WIP.
+
+### Usage
+
+```
+$ npm install babel-jsxgettext
+```
+
+### API
+
+```JavaScript
+var parser = require('babel-jsxgettext')
+
+parser(inputs, output, function (err) {
+  if (err) throw err
+  console.log('Job completed!')
+})
+```
+
+### Command line usage
+
+```
+  A tool like jsxgettext, but works for es6 + jsx that babel support
+
+  Options
+    --help                     Show this help
+    --version                  Current version of package
+    -i | --input               String - The path to soure JavaScript file
+    -o | --output              String - The path of the output PO file
+
+  Usage
+    $ babel-jsxgettext <input> <output>
+
+  Examples
+    $ babel-jsxgettext ./test/*.js ./test.po
+```
+
 
 ### Why
 

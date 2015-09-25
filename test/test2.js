@@ -22,7 +22,11 @@ export default class Header extends Component {
   render () {
     return (
       <header className={styles.header}>
-        <h1 className={styles.h1}>{ gettext('中文测试') }</h1>
+        <Link className={styles.logo} tabIndex={-1} to='/locations'>
+          <img className={styles.img} src={require('../../assets/images/logo.png')} />
+        </Link>
+
+        <h1 className={styles.h1}>{ gettext('中文') }</h1>
 
         <nav className={styles.nav}>
           <Link className={styles.menuItem} to='/locations'>{ gettext('设置') }</Link>
