@@ -6,7 +6,13 @@ var walk = require('acorn/dist/walk')
 
 var functionNames = require('./lib/constant').DEFAULT_FUNCTION_NAMES
 var DEFAULT_HEADERS = require('./lib/constant').DEFAULT_HEADERS
+var BABEL_FEATURES = require('./lib/constant').BABEL_FEATURES
 var jsxBase = require('./lib/base')
+
+var features = BABEL_FEATURES.reduce(function (result, key) {
+  result[key] = true;
+  return result;
+}, {})
 
 /**
  * The parser function
@@ -43,10 +49,8 @@ function parser (inputs, output, cb) {
         allowHashBang: true,
         ecmaVersion: Infinity,
         sourceType: 'module',
-        plugins: {jsx: true},
-        features: {
-          'es7.classProperties': true
-        }
+        plugins: { jsx: true },
+        features: features
       })
 
       walk.simple(ast.program, {
