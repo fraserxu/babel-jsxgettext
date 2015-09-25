@@ -40,11 +40,9 @@ function parser (inputs, output, cb) {
   Object.setPrototypeOf(jsxBase, walk.base)
 
   inputs
-    .map(function (file) {
+    .forEach(function (file) {
       file = path.join(process.cwd(), file)
-      return fs.readFileSync(file, 'utf8')
-    })
-    .forEach(function (src) {
+      var src = fs.readFileSync(file, 'utf8')
       var ast = babylon.parse(src, {
         allowHashBang: true,
         ecmaVersion: Infinity,
@@ -69,7 +67,11 @@ function parser (inputs, output, cb) {
                 var value = arg.value
 
                 if (value) {
+                  var line = node.loc.start.line
                   translate[name] = value
+                  translate['comments'] = {
+                    reference: file + ':' + line
+                  }
                 }
 
                 if (name === 'msgid_plural') {
@@ -83,6 +85,7 @@ function parser (inputs, output, cb) {
 
             var context = defaultContext
             var msgctxt = translate.msgctxt
+
             if (msgctxt) {
               data.translations[msgctxt] = data.translations[msgctxt] || {}
               context = data.translations[msgctxt]
