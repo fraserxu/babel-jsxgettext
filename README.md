@@ -6,7 +6,7 @@ This tool is still WIP.
 ### Usage
 
 ```
-$ npm install babel-jsxgettext
+$ npm install babel-jsxgettext ---save-dev
 ```
 
 ### API
@@ -22,6 +22,8 @@ parser(inputs, output, function (err) {
 
 ### Command line usage
 
+Install globally with npm `npm install babel-jsxgettext -g`
+
 ```
   A tool like jsxgettext, but works for es6 + jsx that babel support
 
@@ -32,6 +34,7 @@ parser(inputs, output, function (err) {
     -o | --output              String - The path of the output PO file
 
   Usage
+    $ babel-jsxgettext --help
     $ babel-jsxgettext <input> <output>
 
   Examples
