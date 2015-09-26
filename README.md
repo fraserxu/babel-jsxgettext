@@ -1,7 +1,14 @@
-# babel-jsxgettext
+babel-jsxgettext
+================
+
+[![NPM version][npm-image]][npm-url]
+[![build status][travis-image]][travis-url]
+[![Downloads][downloads-image]][downloads-url]
+[![js-standard-style][standard-image]][standard-url]
+
 A tool like [jsxgettext](https://www.npmjs.com/package/jsxgettext), but works for `es6` + `jsx` that babel support.
 
-This tool is still WIP.
+I have a blog post explain my workflow in an [Electron app with React + Babel](Translation workflow in Electron application).
 
 ### Usage
 
@@ -44,9 +51,18 @@ Install globally with npm `npm install babel-jsxgettext -g`
 
 ### Why
 
-I'm Using Babel with React + JSX for most of my project, but there's no perfect and direct way to generate `.po` file from ES6 + JSX code.
+I'm Using Babel with React + JSX for most of my project, but there's no perfect and direct way to generate `.po` file from ES6 + JSX code(or from a directory).
 
 `acron-jsx` support `jsx` but not all the feature I use in Babel(ES7 etc.,). So I grab the `babylon` parser from Babel and use it to generate `.po` file.
 
 ### License
 MIT
+
+[npm-image]: https://img.shields.io/npm/v/babel-jsxgettext.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/babel-jsxgettext
+[travis-image]: https://img.shields.io/travis/fraserxu/babel-jsxgettext/master.svg?style=flat-square
+[travis-url]: https://travis-ci.org/fraserxu/babel-jsxgettext
+[downloads-image]: http://img.shields.io/npm/dm/babel-jsxgettext.svg?style=flat-square
+[downloads-url]: https://npmjs.org/package/babel-jsxgettext
+[standard-image]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square
+[standard-url]: https://github.com/feross/standard
