@@ -8,7 +8,7 @@ babel-jsxgettext
 
 A tool like [jsxgettext](https://www.npmjs.com/package/jsxgettext), but works for `es6` + `jsx` that babel support.
 
-I have a blog post explain my workflow in an [Electron app with React + Babel](Translation workflow in Electron application).
+I have a blog post explain my translation workflow in an [Electron app with React + Babel](https://fraserxu.me/2015/09/18/translation-workflow-in-Electron-application/).
 
 ### Usage
 
@@ -21,6 +21,12 @@ $ npm install babel-jsxgettext ---save-dev
 ```JavaScript
 var parser = require('babel-jsxgettext')
 
+/**
+ * The parser function
+ * @param  {String}   input  The path to soure JavaScript file
+ * @param  {String}   output The path of the output PO file
+ * @param  {Function} cb     The callback function
+ */
 parser(inputs, output, function (err) {
   if (err) throw err
   console.log('Job completed!')
