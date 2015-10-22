@@ -13,7 +13,7 @@ I have a blog post explain my translation workflow in an [Electron app with Reac
 ### Usage
 
 ```
-$ npm install babel-jsxgettext ---save-dev
+$ npm install babel-jsxgettext --save-dev
 ```
 
 ### API
@@ -23,7 +23,7 @@ var parser = require('babel-jsxgettext')
 
 /**
  * The parser function
- * @param  {String}   input  The path to soure JavaScript file
+ * @param  {String}   input  The path to source JavaScript file
  * @param  {String}   output The path of the output PO file
  * @param  {Function} cb     The callback function
  */
