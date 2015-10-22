@@ -14,6 +14,13 @@ var features = BABEL_FEATURES.reduce(function (result, key) {
   return result
 }, {})
 
+
+// Polyfill Object.setPrototypeOf
+Object.setPrototypeOf = Object.setPrototypeOf || function(obj, proto) {
+  obj.__proto__ = proto;
+  return obj;
+};
+
 /**
  * The parser function
  * @param  {String}   input  The path to soure JavaScript file
