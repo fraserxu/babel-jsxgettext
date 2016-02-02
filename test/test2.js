@@ -227,6 +227,7 @@ export default class Main extends Component {
           { !isFetchingTownships &&
             <div className={styles.action}>
               <span className={styles.preview}>{ gettext('New file name: ') } { `${!isFetchingTownships ? this.findTownshipById(townships, selectedTownship).pcode : ''}_${tract || ''}_${currentMeyo && currentMeyo.length > 0 ? currentMeyo.replace(/ /g, '-').replace(/_/g, '-') : ''}_${formType || ''}_${elections && election ? this.findElectionById(elections, election).pcode : ''}_Page${pageNumber || ''}.png` }</span>
+              {/* only valid meyo when is form 16 and form 16a */}
               <button disabled={!validName} className={styles.submit} type='submit'>{ gettext('Rename') }</button>
             </div>
           }
