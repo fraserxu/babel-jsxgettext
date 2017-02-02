@@ -215,7 +215,7 @@ export default class Main extends Component {
             <label className={styles.label} htmlFor='electron'>{ gettext('Page') }</label>
             <select value={pageNumber} onChange={::this.onPageChange} className={styles.input}>
               <option selected disabled>{ gettext('Select Page') }</option>
-                {
+              {
                   [1, 2, 3]
                   .map((page) => {
                     return <option key={page} value={page}>{page}</option>

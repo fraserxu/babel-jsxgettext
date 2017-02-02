@@ -7,7 +7,8 @@
     "test": "test"
   },
   "scripts": {
-    "test": "standard"
+    "test": "standard",
+    "lint-fix": "standard --fix"
   },
   "repository": {
     "type": "git",
@@ -43,6 +44,6 @@
   },
   "devDependencies": {
     "babel-eslint": "^7.1.1",
-    "standard": "^5.3.1"
+    "standard": "^8.6.0"
   }
 }

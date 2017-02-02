@@ -15,10 +15,6 @@ export default class Header extends Component {
     store: PropTypes.any
   }
 
-  constructor (props, context) {
-    super(props, context)
-  }
-
   render () {
     return (
       <header className={styles.header}>
