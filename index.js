@@ -2,7 +2,7 @@ var fs = require('fs')
 var path = require('path')
 var gettextParser = require('gettext-parser')
 var babylon = require('babylon')
-var walk = require('acorn/dist/walk')
+var walk = require('babylon-walk')
 
 var functionNames = require('./lib/constant').DEFAULT_FUNCTION_NAMES
 var DEFAULT_HEADERS = require('./lib/constant').DEFAULT_HEADERS
@@ -37,8 +37,6 @@ function parser (inputs, output, cb) {
 
   var nplurals = /nplurals ?= ?(\d)/.exec(headers['plural-forms'])[1]
 
-  Object.setPrototypeOf(jsxBase, walk.base)
-
   inputs
     .forEach(function (file) {
       var resolvedFilePath = path.join(process.cwd(), file)
@@ -47,7 +45,7 @@ function parser (inputs, output, cb) {
         allowHashBang: true,
         ecmaVersion: Infinity,
         sourceType: 'module',
-        plugins: { jsx: true },
+        plugins: ['jsx'],
         features: features
       })
 
