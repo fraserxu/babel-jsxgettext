@@ -20,7 +20,7 @@ var features = BABEL_FEATURES.reduce(function (result, key) {
  * @param  {String}   output The path of the output PO file
  * @param  {Function} cb     The callback function
  */
-function parser (inputs, output, cb) {
+function parser (inputs, output, plugins, cb) {
   var data = {
     charset: 'UTF-8',
     headers: DEFAULT_HEADERS,
@@ -45,7 +45,7 @@ function parser (inputs, output, cb) {
         allowHashBang: true,
         ecmaVersion: Infinity,
         sourceType: 'module',
-        plugins: ['jsx'],
+        plugins: plugins || ['jsx', 'classProperties'],
         features: features
       })
 
