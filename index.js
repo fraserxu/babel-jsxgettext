@@ -45,7 +45,7 @@ function parser (inputs, output, plugins, cb) {
         allowHashBang: true,
         ecmaVersion: Infinity,
         sourceType: 'module',
-        plugins: plugins || ['jsx', 'classProperties'],
+        plugins: ['jsx'].concat(plugins),
         features: features
       })
 
