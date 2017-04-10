@@ -6,7 +6,6 @@ var walk = require('babylon-walk')
 
 var functionNames = require('./lib/constant').DEFAULT_FUNCTION_NAMES
 var DEFAULT_HEADERS = require('./lib/constant').DEFAULT_HEADERS
-var jsxBase = require('./lib/base')
 
 /**
  * The parser function
@@ -85,7 +84,7 @@ function parser (inputs, output, plugins, cb) {
             context[translate.msgid] = translate
           }
         }
-      }, jsxBase)
+      })
     })
 
   fs.writeFile(output, gettextParser.po.compile(data), function (err) {
