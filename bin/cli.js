@@ -10,6 +10,7 @@ var cli = meow({
     'Options',
     '  --help                     Show this help',
     '  --version                  Current version of package',
+    '  -p | --plugins             String - Babylon plugins list (`jsx` is always included)',
     '  -i | --input               String - The path to soure JavaScript file',
     '  -o | --output              String - The path of the output PO file',
     '',
@@ -18,16 +19,18 @@ var cli = meow({
     '',
     'Examples',
     '  $ babel-jsxgettext ./test/*.js test.po',
+    '  $ babel-jsxgettext --plugins "classProperties,objectRestSpread" ./test/*.js test.po',
 
     ''
   ].join('\n')
 })
 
+var plugins = cli.flags.plugins ? cli.flags.plugins.split(',') : []
 var inputs = cli.input.slice(0, cli.input.length - 1)
 var output = cli.flags.o || cli.flags.output || cli.input[cli.input.length - 1]
 output = path.join(process.cwd(), output)
 
-parser(inputs, output, function (err) {
+parser(inputs, output, plugins, function (err) {
   if (err) throw err
   console.log('Job completed!')
 })
