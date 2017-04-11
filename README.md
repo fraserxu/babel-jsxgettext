@@ -25,9 +25,10 @@ var parser = require('babel-jsxgettext')
  * The parser function
  * @param  {String}   input  The path to source JavaScript file
  * @param  {String}   output The path of the output PO file
+ * @param  {String}   plugins Babel plugins, separate by `,`
  * @param  {Function} cb     The callback function
  */
-parser(inputs, output, function (err) {
+parser(inputs, output, plugins, function (err) {
   if (err) throw err
   console.log('Job completed!')
 })
