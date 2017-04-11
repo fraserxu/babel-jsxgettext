@@ -44,6 +44,7 @@ Install globally with npm `npm install babel-jsxgettext -g`
   Options
     --help                     Show this help
     --version                  Current version of package
+    -p | --plugins             String - Babylon plugins list (`jsx` is always included)'
     -i | --input               String - The path to soure JavaScript file
     -o | --output              String - The path of the output PO file
 
@@ -53,6 +54,7 @@ Install globally with npm `npm install babel-jsxgettext -g`
 
   Examples
     $ babel-jsxgettext ./test/*.js ./test.po
+    $ babel-jsxgettext --plugins "classProperties,objectRestSpread" ./test/*.js test.po
 ```
 
 
