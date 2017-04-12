@@ -34,12 +34,19 @@ function parser (inputs, output, plugins, cb) {
     .forEach(function (file) {
       var resolvedFilePath = path.join(process.cwd(), file)
       var src = fs.readFileSync(resolvedFilePath, 'utf8')
-      var ast = babylon.parse(src, {
-        allowHashBang: true,
-        ecmaVersion: Infinity,
-        sourceType: 'module',
-        plugins: ['jsx'].concat(plugins)
-      })
+
+      try {
+        var ast = babylon.parse(src, {
+          allowHashBang: true,
+          ecmaVersion: Infinity,
+          sourceType: 'module',
+          plugins: ['jsx'].concat(plugins),
+          features: features
+        })
+      } catch (e) {
+        console.error(`SyntaxError in ${file} (line: ${e.loc.line}, column: ${e.loc.column})`)
+        process.exit(1)
+      }
 
       walk.simple(ast.program, {
         CallExpression: function (node) {
