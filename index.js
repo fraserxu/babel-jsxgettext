@@ -109,4 +109,8 @@ function parser (inputs, output, plugins, cb) {
   })
 }
 
+parser.addAlias = function (name, alias) {
+  functionNames[alias] = functionNames[name]
+}
+
 module.exports = parser
