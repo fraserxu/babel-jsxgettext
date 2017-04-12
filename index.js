@@ -40,8 +40,7 @@ function parser (inputs, output, plugins, cb) {
           allowHashBang: true,
           ecmaVersion: Infinity,
           sourceType: 'module',
-          plugins: ['jsx'].concat(plugins),
-          features: features
+          plugins: ['jsx'].concat(plugins)
         })
       } catch (e) {
         console.error(`SyntaxError in ${file} (line: ${e.loc.line}, column: ${e.loc.column})`)
