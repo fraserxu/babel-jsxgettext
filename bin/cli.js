@@ -10,7 +10,7 @@ var cli = meow({
     'Options',
     '  --help                     Show this help',
     '  --version                  Current version of package',
-    '  -p | --plugins             String - Babylon plugins list (`jsx` is always included)',
+    '  -p | --plugins             String - Babel parser plugins list (`jsx` is always included)',
     '  -i | --input               String - The path to soure JavaScript file',
     '  -o | --output              String - The path of the output PO file',
     '',

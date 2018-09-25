@@ -25,7 +25,7 @@ var parser = require('babel-jsxgettext')
  * The parser function
  * @param  {String}   input  The path to source JavaScript file
  * @param  {String}   output The path of the output PO file
- * @param  {String}   plugins Babel plugins, separate by `,`
+ * @param  {String}   plugins Babel parser plugins, separate by `,`
  * @param  {Function} cb     The callback function
  */
 parser(inputs, output, plugins, function (err) {
@@ -44,7 +44,7 @@ Install globally with npm `npm install babel-jsxgettext -g`
   Options
     --help                     Show this help
     --version                  Current version of package
-    -p | --plugins             String - Babylon plugins list (`jsx` is always included)'
+    -p | --plugins             String - Babel parser plugins list (`jsx` is always included)'
     -i | --input               String - The path to soure JavaScript file
     -o | --output              String - The path of the output PO file
 
@@ -62,7 +62,7 @@ Install globally with npm `npm install babel-jsxgettext -g`
 
 I'm Using Babel with React + JSX for most of my project, but there's no perfect and direct way to generate `.po` file from ES6 + JSX code(or from a directory).
 
-`acron-jsx` support `jsx` but not all the feature I use in Babel(ES7 etc.,). So I grab the `babylon` parser from Babel and use it to generate `.po` file.
+`acron-jsx` support `jsx` but not all the feature I use in Babel(ES7 etc.,). So I grab the [Babel parser](https://babeljs.io/docs/en/babel-parser) and use it to generate `.po` file.
 
 ### License
 MIT

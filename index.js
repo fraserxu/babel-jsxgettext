@@ -1,7 +1,7 @@
 var fs = require('fs')
 var path = require('path')
 var gettextParser = require('gettext-parser')
-var babylon = require('babylon')
+var babelParser = require('@babel/parser')
 var walk = require('babylon-walk')
 
 var functionNames = require('./lib/constant').DEFAULT_FUNCTION_NAMES
@@ -36,9 +36,7 @@ function parser (inputs, output, plugins, cb) {
       var src = fs.readFileSync(resolvedFilePath, 'utf8')
 
       try {
-        var ast = babylon.parse(src, {
-          allowHashBang: true,
-          ecmaVersion: Infinity,
+        var ast = babelParser.parse(src, {
           sourceType: 'module',
           plugins: ['jsx'].concat(plugins)
         })

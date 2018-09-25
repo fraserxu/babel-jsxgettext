@@ -37,7 +37,7 @@
   },
   "homepage": "https://github.com/fraserxu/babel-jsxgettext#readme",
   "dependencies": {
-    "babylon": "^6.15.0",
+    "@babel/parser": "^7.1.0",
     "babylon-walk": "^1.0.2",
     "gettext-parser": "^1.2.2",
     "meow": "^3.7.0"
